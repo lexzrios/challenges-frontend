@@ -32,7 +32,6 @@ class ChallengesApiClient {
     }
 
     static getAttempts(userAlias: string): Promise<Response> {
-        console.log('Get attempts for '+userAlias);
         return fetch(ChallengesApiClient.SERVER_URL +
             ChallengesApiClient.GET_ATTEMPTS_BY_ALIAS + userAlias);
     }

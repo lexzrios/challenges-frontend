@@ -48,6 +48,7 @@ class LeaderBoardComponent extends React.Component {
         this.getLeaderBoardData().then(
             lbData => {
                 let userIds = lbData.map(row => row.userId);
+                if(userIds.length > 0) {
                 this.getUserAliasData(userIds).then(data => {
                     // build a map of id -> alias
                     let userMap = new Map();
@@ -63,6 +64,7 @@ class LeaderBoardComponent extends React.Component {
                     console.log('Error mapping user ids', reason);
                     this.updateLeaderBoard(lbData);
                 });
+            }
             }
         ).catch(reason => {
             this.setState({ serverError: true });
